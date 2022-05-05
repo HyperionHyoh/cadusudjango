@@ -5,12 +5,17 @@
 
     <form method="post">
         {% csrf_token %}
-        {% bootstrap_form form %}
+        {% bootstrap_javascript jquery=True %}
+        {% bootstrap_messages %}
+        {% bootstrap_form_errors form layout='inline' %}
+        {% bootstrap_form form layout='horizontal' %}
             {% buttons %}
+            <div class="text-center">
                 <button type="submit" class="btn btn-primary">Salvar</button>
                 <button type="button" class="btn btn-warning">
                     <a href="{% url 'index' %}">Cancelar</a>
                 </button>
+            </div>
             {% endbuttons %}
     </form>
 {% endblock %}
