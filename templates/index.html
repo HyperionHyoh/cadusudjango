@@ -1,14 +1,43 @@
 {% extends 'base.html' %}
+{% load humanize %}
 {% block content %}
     <div class="container">
         <h1>Login</h1>
         {% if user.is_anonymous %}
            <a class="btn btn-primary" href="{% url 'login' %}">Login</a>
+        <a class="btn btn-primary" href="#">Cadastro</a>
         {% else %}
             <div class="alert alert-primary" role="alert">
                 Seja bem-vindo(a) {{ user.get_full_name }}!
             </div>
             <a class="btn btn-primary" href="{% url 'logout' %}">Logout</a>
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+
+                        <th scope="col">Id</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">E-mail</th>
+                        <th scope="col">Telefone</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                        <tr>
+                            <td>{{ user.id }}</td>
+                            <td>{{ user.get_full_name }}</td>
+                            <td>{{ user.email }}</td>
+                            <td>{{ user.fone }}</td>
+
+                            <td>
+                                <a class="btn btn-warning" href="{% url 'upd_usuario' user.id %}">Editar</a>
+                                <a class="btn btn-danger" href="{% url 'del_usuario' user.id %}">Excluir Usuário</a>
+                            </td>
+                        </tr>
+
+                </tbody>
+            </table>
         {% endif %}
     </div>
 {% endblock %}
