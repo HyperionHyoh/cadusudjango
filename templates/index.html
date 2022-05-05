@@ -2,10 +2,10 @@
 {% load humanize %}
 {% block content %}
     <div class="container">
-        <h1>Login</h1>
+        <h1>Cadastro de Usuário Web</h1>
         {% if user.is_anonymous %}
            <a class="btn btn-primary" href="{% url 'login' %}">Login</a>
-        <a class="btn btn-primary" href="#">Cadastro</a>
+        <a class="btn btn-primary" href="/add">Cadastro</a>
         {% else %}
             <div class="alert alert-primary" role="alert">
                 Seja bem-vindo(a) {{ user.get_full_name }}!
